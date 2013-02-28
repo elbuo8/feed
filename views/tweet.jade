@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	div#data
+		input#user(type='text', name='user', placeholder='enter username')
+		br
+		textarea(type='textarea', name='code', placeholder = 'tweet here!', id='tweet')
+		br
+		button#submitTweet(type='button') Tweet
+
+block script
+	script
+		$(document).ready(function() {
+			$('#submitTweet').on('click', function() {
+				console.log("Submitting");
+				$.post('/submit', {user: $('#user').val(), tweet:$('#tweet').val()}, function(result) {
+					$('#data').text(result);
+				});
+			});
+		});
+		

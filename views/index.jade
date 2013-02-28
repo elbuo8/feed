@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  for tweet in tweets
+    div
+      p #{tweet.user} - #{tweet.tweet}
